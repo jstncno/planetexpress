@@ -9,7 +9,7 @@ apt-get install nfs-kernel-server portmap nfs-common
 apt-get install exfat-fuse exfat-utils
 
 # Install Python tools
-apt-get install python-pip flask
+apt-get install python-pip flask flask-cors
 
 # Install Beets
 pip install beets
