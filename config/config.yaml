@@ -1,0 +1,7 @@
+# ~/.config/beets/config.yaml
+directory: /media/USBHDD1/Music
+library: /media/USBHDD1/Music/.data/musiclibrary.blb
+plugins: inline convert web
+web:
+    host: 0.0.0.0
+    cors: 192.168.0.103
