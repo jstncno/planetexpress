@@ -1,4 +1,4 @@
-# First, update and upgrate
+# First, update and upgrade
 apt-get update
 apt-get upgrade
 
