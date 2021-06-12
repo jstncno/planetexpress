@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  calculon:
+    image: emby/embyserver
+    container_name: calculon
+    hostname: calculon
+    environment:
+    - UID=1000 # The UID to run emby as (default: 2)
+    - GID=100 # The GID to run emby as (default 2)
+    - GIDLIST=100 # A comma-separated list of additional GIDs to run emby as (default: 2)
+    volumes:
+    - /media/emby:/config # Configuration directory
+    - /media/warehouse/media/movies:/media/movies # Media directory
+    - /media/warehouse/media/tv:/media/tv # Media directory
+    devices:
+    - /dev/dri:/dev/dri # VAAPI/NVDEC/NVENC render nodes
+    restart: unless-stopped
+  proxy:
+    image: nginx
+    container_name: proxy
+    hostname: proxy
+    depends_on:
+      - calculon
+    ports:
+      - 80:80
+      - 443:443
+      - 8096:8096 # HTTP port
+      - 8920:8920 # HTTPS port
+    volumes:
+      - ./nginx:/etc/nginx
+      - /etc/ssl/private:/etc/ssl/private
