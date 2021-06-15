@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  calculon:
+  emby:
     image: emby/embyserver
     container_name: calculon
     hostname: calculon
@@ -18,10 +18,10 @@ services:
     restart: unless-stopped
   proxy:
     image: nginx
-    container_name: proxy
-    hostname: proxy
+    container_name: oldbessie
+    hostname: oldbessie
     depends_on:
-      - calculon
+      - emby
     ports:
       - 80:80
       - 443:443

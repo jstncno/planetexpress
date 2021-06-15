@@ -1,0 +1,10 @@
+[Unit]
+Description=Planet Express
+
+[Service]
+WorkingDirectory=/home/jcano/Workspaces/planetexpress
+ExecStart=docker-compose up
+User=jcano
+
+[Install]
+WantedBy=default.target
