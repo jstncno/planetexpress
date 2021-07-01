@@ -13,6 +13,5 @@ if __name__ == '__main__':
 
   args = parser.parse_args()
 
-  print(args)
   img, _ = image.build(args.path, args.tag)
   image.save(img, args.tag)
