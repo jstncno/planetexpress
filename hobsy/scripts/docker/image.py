@@ -11,8 +11,8 @@ def build(path: str, tag: str, **kwargs) -> Image:
 
 
 def save(image: Image, name: str, dest: str = ".") -> str:
-  path = os.path.join(dest, name)
+  path = os.path.join(dest, f'{name}.tar')
   with open(path, 'wb') as f:
-    for chunk in image:
+    for chunk in image.save():
       f.write(chunk)
   return path
