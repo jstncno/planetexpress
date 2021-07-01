@@ -13,3 +13,7 @@ HTTP services.
 ### Calculon
 
 A containerized [Emby](https://emby.media/) media server.
+
+### Hobsy
+
+A containerized [Jenkins](https://www.jenkins.io/) service.
