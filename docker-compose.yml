@@ -17,11 +17,16 @@ services:
     - /dev/dri:/dev/dri # VAAPI/NVDEC/NVENC render nodes
     restart: unless-stopped
   hobsy:
-    image: jenkins/jenkins:alpine
+    build:
+      context: ./hobsy
+      dockerfile: Dockerfile
     container_name: hobsy
     hostname: hobsy
     volumes:
-      - ./jenkins:/var/jenkins_home
+      - ./hobsy/jenkins:/var/jenkins_home
+      # Expose Docker socket so Jenkins can access it
+      # https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/#the-socket-solution
+      - /var/run/docker.sock:/var/run/docker.sock
   proxy:
     image: nginx
     container_name: oldbessie
