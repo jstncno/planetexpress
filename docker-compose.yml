@@ -16,15 +16,24 @@ services:
     devices:
     - /dev/dri:/dev/dri # VAAPI/NVDEC/NVENC render nodes
     restart: unless-stopped
+  hobsy:
+    image: jenkins/jenkins:alpine
+    container_name: hobsy
+    hostname: hobsy
+    volumes:
+      - ./jenkins:/var/jenkins_home
   proxy:
     image: nginx
     container_name: oldbessie
     hostname: oldbessie
     depends_on:
       - emby
+      - hobsy
     ports:
-      - 8096:8096 # HTTP port
-      - 8920:8920 # HTTPS port
+      - 8096:8096 # Emby HTTP port
+      - 8920:8920 # Emby HTTPS port
+      - 8080:8080 # Jenkins
+      - 50000:50000 # Jenkins
     volumes:
       - ./nginx:/etc/nginx
       - /etc/ssl/private:/etc/ssl/private
