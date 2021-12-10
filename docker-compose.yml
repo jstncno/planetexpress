@@ -37,7 +37,7 @@ services:
     ports:
       - 8096:8096 # Emby HTTP port
       - 8920:8920 # Emby HTTPS port
-      - 8080:8080 # Jenkins
+      - 8989:8080 # Jenkins
       - 50000:50000 # Jenkins
     volumes:
       - ./nginx:/etc/nginx
